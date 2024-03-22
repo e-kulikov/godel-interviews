@@ -1,0 +1,7 @@
+{
+  "name": "Interview app (React.js, Fastify, PostgreSQL)",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "forwardPorts": [3000, 5432, 5173]
+}
