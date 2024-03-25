@@ -1,25 +1,29 @@
 {
+  // These tasks will run in order when initializing your CodeSandbox project.
   "setupTasks": [
     {
       "name": "Install Dependencies",
       "command": "pnpm install"
     }
   ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
     "react-dev": {
       "name": "react:dev",
       "command": "pnpm react:dev",
-      "runAtStart": true
+      "runAtStart": true,
+      "preview": {
+        "port": 5173
+      }
     },
     "react-build": {
       "name": "react:build",
-      "command": "pnpm react:build",
-      "runAtStart": false
+      "command": "pnpm react:build"
     },
     "react-preview": {
       "name": "react:preview",
-      "command": "pnpm react:preview",
-      "runAtStart": false
+      "command": "pnpm react:preview"
     }
   }
 }
