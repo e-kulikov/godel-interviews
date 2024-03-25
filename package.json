@@ -5,6 +5,9 @@
   "main": "bin/start",
   "packageManager": "pnpm@8.15.5",
   "scripts": {
+    "react:dev": "cd ./front/react && pnpm dev",
+    "react:build": "cd ./front/react && pnpm build",
+    "react:preview": "cd ./front/react && pnpm preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

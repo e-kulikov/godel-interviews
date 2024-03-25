@@ -1,0 +1,25 @@
+{
+  "setupTasks": [
+    {
+      "name": "Install Dependencies",
+      "command": "pnpm install"
+    }
+  ],
+  "tasks": {
+    "react-dev": {
+      "name": "react:dev",
+      "command": "pnpm react:dev",
+      "runAtStart": true
+    },
+    "react-build": {
+      "name": "react:build",
+      "command": "pnpm react:build",
+      "runAtStart": false
+    },
+    "react-preview": {
+      "name": "react:preview",
+      "command": "pnpm react:preview",
+      "runAtStart": false
+    }
+  }
+}
