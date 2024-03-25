@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { CustomerCard } from "./CustomerCard.tsx";
 import { PageSize } from "./PageSize.tsx";
@@ -12,12 +12,8 @@ import { PAGE_SIZE } from "./settings.json";
 export const Dashboard = () => {
     const [pageSize, setPageSize] = useState(PAGE_SIZE.default);
     const [pageNumber, setPageNumber] = useState(0);
-    const path = useMemo(
-        () => `pokemon?limit=${pageSize}&offset=${pageSize * pageNumber}`,
-        [pageSize, pageNumber]
-    );
     const { data, loading, error } = useAPICall({
-        path,
+        path: `pokemon?limit=${pageSize}&offset=${pageSize * pageNumber}`,
         parseResponse
     });
 
@@ -35,11 +31,10 @@ export const Dashboard = () => {
 
     return (
         <div>
-            <p style={{ background: "red" }}>{import.meta.env.FRONT_API_URL}</p>
             <PageSize size={pageSize} onSetSize={setPageSize} />
             <div className="customer-list">
                 {data.map((customer) => (
-                    <CustomerCard name={customer.name} />
+                    <CustomerCard key={customer.name} name={customer.name} />
                 ))}
             </div>
             <Pagination pageNumber={pageNumber} onSetPage={setPageNumber} />

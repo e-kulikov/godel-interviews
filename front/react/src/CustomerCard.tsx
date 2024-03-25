@@ -1,15 +1,13 @@
 import { useAPICall } from "./use-api-call.ts";
 import { parseCustomerData as parseResponse } from "./customer-utils.ts";
-import {useMemo} from "react";
 
 interface CustomerProps {
     name: string
 }
 
 export const CustomerCard = ({ name }: CustomerProps) => {
-    const path = useMemo(() => `pokemon/${name}`, [name]);
     const { loading, error, data } = useAPICall({
-        path,
+        path: `pokemon/${name}`,
         parseResponse
     });
 

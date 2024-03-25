@@ -11,6 +11,7 @@ export const PageSize = ({ size, onSetSize }: PageSizeProps) => {
             <span>Size:</span>
             {PAGE_SIZE.available.map((pageSize) => (
                 <button
+                    key={pageSize}
                     disabled={size === pageSize}
                     onClick={() => onSetSize(pageSize)}
                 >
