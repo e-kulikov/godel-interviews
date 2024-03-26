@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue';
+import { defineEmits, defineProps } from "vue";
 
-defineProps(['currentPageNumber']);
-defineEmits(['changePageNumber']);
+defineProps(["currentPageNumber"]);
+defineEmits(["changePageNumber"]);
 </script>
 
 <template>
