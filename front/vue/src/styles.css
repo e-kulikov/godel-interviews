@@ -1,0 +1,95 @@
+:root {
+  --active-color: #3a6ea5;
+  --dark-color: #1f3b58;
+  --bright-color: #93b5d9;
+  --white: #f3f3f3;
+  --black: #0f1020;
+  --error-color: #db5461;
+  --success-color: #8bb174;
+  --gap: 5px;
+}
+
+body {
+  font-family: "Work Sans", Helvetica, Arial, sans-serif;
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+}
+
+.app {
+  padding: var(--gap);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: var(--gap);
+}
+
+.title::before {
+  content: "";
+  display: block;
+  background: url("./assets/logo.png") no-repeat;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.page-size {
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: var(--gap);
+}
+
+.page-size button {
+  cursor: pointer;
+  font-weight: 400;
+  border-radius: 2px;
+  border: 1px solid var(--dark-color);
+  background: var(--bright-color);
+  padding: 5px 10px;
+}
+
+.page-size button:disabled {
+  background: var(--active-color);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.customer-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: calc(var(--gap) * 2) 0;
+}
+
+.customer {
+  display: block;
+  width: 22%;
+  border-radius: 5px;
+  padding: var(--gap);
+  border: 1px solid var(--dark-color);
+  box-shadow: 1px 1px 3px var(--bright-color);
+  transition: all 0.3s ease;
+}
+
+.customer:hover {
+  background: var(--bright-color);
+}
+
+.customer .picture {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: var(--gap);
+}

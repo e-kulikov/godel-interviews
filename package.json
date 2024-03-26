@@ -7,6 +7,9 @@
     "front:react:dev": "cd ./front/react && pnpm dev",
     "front:react:build": "cd ./front/react && pnpm build",
     "front:react:preview": "cd ./front/react && pnpm preview",
+    "front:vue:dev": "cd ./front/vue && pnpm dev",
+    "front:vue:build": "cd ./front/vue && pnpm build",
+    "front:vue:preview": "cd ./front/vue && pnpm preview",
     "server:fastify:dev": "cd ./server/fastify && pnpm dev"
   },
   "keywords": [],
