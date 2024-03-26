@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import PageSize from "./PageSize.vue";
 import Pagination from "./Pagination.vue";
 import CustomerCard from "./CustomerCard.vue";
-import useAPICall from "./use-api-call.ts";
+// import useAPICall from "./use-api-call.ts";
 
 import { PAGE_SIZE } from "./settings.json";
 import { parseCustomersList } from "./customer-utils.ts";
+import { getPokemons } from "./pokemons.api";
 
 const pageSize = ref<number>(PAGE_SIZE.default);
 const setPageSize = (size: number) => (pageSize.value = size);
@@ -14,9 +15,12 @@ const setPageSize = (size: number) => (pageSize.value = size);
 const pageNumber = ref<number>(0);
 const setPageNumber = (pageNum: number) => (pageNumber.value = pageNum);
 
-const { loading, error, data } = useAPICall({
-  path: `pokemon?limit=${pageSize.value}&offset=${pageNumber.value * pageSize.value}`,
-  parseResponse: parseCustomersList,
+const data = ref();
+onMounted(async () => {
+  data.value = await getPokemons(
+    pageSize.value,
+    pageNumber.value * pageSize.value,
+  );
 });
 </script>
 

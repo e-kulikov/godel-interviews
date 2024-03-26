@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { parseCustomerData as parseResponse } from "./customer-utils.ts";
-import useAPICall from "./use-api-call.ts";
+// import useAPICall from "./use-api-call.ts";
 
 const props = defineProps(["name"]);
-
-const { loading, error, data } = useAPICall({
-  path: `pokemon/${props.name}`,
-  parseResponse,
-});
 </script>
 
 <template>
