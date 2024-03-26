@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { PAGE_SIZE } from './settings.json';
-import { defineEmits, defineProps } from 'vue';
+import { PAGE_SIZE } from "./settings.json";
+import { defineEmits, defineProps } from "vue";
 
-defineProps(['currentSize'])
-defineEmits(['changePageSize']);
+defineProps(["currentSize"]);
+defineEmits(["changePageSize"]);
 </script>
 
 <template>

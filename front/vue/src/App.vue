@@ -4,9 +4,7 @@ import Dashboard from "./Dashboard.vue";
 
 <template>
   <div class="app">
-    <h1 class="title">
-      “Pikachu Business” LLC
-    </h1>
+    <h1 class="title">“Pikachu Business” LLC</h1>
     <Dashboard />
   </div>
 </template>
