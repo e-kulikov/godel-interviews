@@ -10,20 +10,20 @@
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
     "react-dev": {
-      "name": "react:dev",
-      "command": "pnpm react:dev",
+      "name": "front:react:dev",
+      "command": "pnpm front:react:dev",
       "runAtStart": true,
       "preview": {
         "port": 5173
       }
     },
     "react-build": {
-      "name": "react:build",
-      "command": "pnpm react:build"
+      "name": "front:react:build",
+      "command": "pnpm front:react:build"
     },
     "react-preview": {
-      "name": "react:preview",
-      "command": "pnpm react:preview"
+      "name": "front:react:preview",
+      "command": "pnpm front:react:preview"
     }
   }
 }
