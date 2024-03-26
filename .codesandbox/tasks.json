@@ -12,7 +12,6 @@
     "react-dev": {
       "name": "front:react:dev",
       "command": "pnpm front:react:dev",
-      "runAtStart": true,
       "preview": {
         "port": 5173
       }
@@ -23,7 +22,36 @@
     },
     "react-preview": {
       "name": "front:react:preview",
-      "command": "pnpm front:react:preview"
+      "command": "pnpm front:react:preview",
+      "preview": {
+        "port": 4173
+      }
+    },
+    "react-lint": {
+      "name": "front:react:lint",
+      "command": "pnpm front:react:lint"
+    },
+    "vue-dev": {
+      "name": "front:vue:dev",
+      "command": "pnpm front:vue:dev",
+      "preview": {
+        "port": 5173
+      }
+    },
+    "vue-build": {
+      "name": "front:vue:build",
+      "command": "pnpm front:vue:build"
+    },
+    "vue-preview": {
+      "name": "front:vue:preview",
+      "command": "pnpm front:vue:preview",
+      "preview": {
+        "port": 4173
+      }
+    },
+    "vue-lint": {
+      "name": "front:vue:lint",
+      "command": "pnpm front:vue:lint"
     }
   }
 }
