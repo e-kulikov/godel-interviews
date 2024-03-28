@@ -12,11 +12,18 @@ const { loading, error, data } = useAPICall({
 </script>
 
 <template>
-  <div v-if="data" class="customer">
+  <div
+    v-if="data"
+    class="customer"
+  >
     <p class="name">
       {{ data.name }}
     </p>
-    <img :src="data.picture" :alt="data.name" class="picture" />
+    <img
+      :src="data.picture"
+      :alt="data.name"
+      class="picture"
+    >
     <p>Weight: {{ data.weight }}</p>
     <p>Height: {{ data.height }}</p>
     <p>Abilities: {{ data.abilities.join(", ") }}</p>

@@ -3,55 +3,64 @@
   "setupTasks": [
     {
       "name": "Install Dependencies",
-      "command": "pnpm install"
+      "command": "corepack enable & corepack pnpm install"
     }
   ],
 
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
+    "install": {
+      "name": "install dependencies",
+      "command": "corepack pnpm install",
+      "restartOn": {
+        "files": ["**/package.json"],
+        "branch": false,
+        "resume": false
+      }
+    },
     "react-dev": {
       "name": "front:react:dev",
-      "command": "pnpm front:react:dev",
+      "command": "corepack pnpm front:react:dev",
       "preview": {
         "port": 5173
       }
     },
     "react-build": {
       "name": "front:react:build",
-      "command": "pnpm front:react:build"
+      "command": "corepack pnpm front:react:build"
     },
     "react-preview": {
       "name": "front:react:preview",
-      "command": "pnpm front:react:preview",
+      "command": "corepack pnpm front:react:preview",
       "preview": {
         "port": 4173
       }
     },
     "react-lint": {
       "name": "front:react:lint",
-      "command": "pnpm front:react:lint"
+      "command": "corepack pnpm front:react:lint"
     },
     "vue-dev": {
       "name": "front:vue:dev",
-      "command": "pnpm front:vue:dev",
+      "command": "corepack pnpm front:vue:dev",
       "preview": {
         "port": 5173
       }
     },
     "vue-build": {
       "name": "front:vue:build",
-      "command": "pnpm front:vue:build"
+      "command": "corepack pnpm front:vue:build"
     },
     "vue-preview": {
       "name": "front:vue:preview",
-      "command": "pnpm front:vue:preview",
+      "command": "corepack pnpm front:vue:preview",
       "preview": {
         "port": 4173
       }
     },
     "vue-lint": {
       "name": "front:vue:lint",
-      "command": "pnpm front:vue:lint"
+      "command": "corepack pnpm front:vue:lint"
     }
   }
 }

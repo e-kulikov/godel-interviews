@@ -22,9 +22,15 @@ const { loading, error, data } = useAPICall({
 
 <template>
   <div>
-    <PageSize :current-size="pageSize" @change-page-size="setPageSize" />
+    <PageSize
+      :current-size="pageSize"
+      @change-page-size="setPageSize"
+    />
     <div class="customer-list">
-      <CustomerCard v-for="{ name } in data" :name="name" />
+      <CustomerCard
+        v-for="{ name } in data"
+        :name="name"
+      />
     </div>
     <Pagination
       :current-page-number="pageNumber"
