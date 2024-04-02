@@ -5,5 +5,5 @@
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [3000, 5173, 4173],
-  "postCreateCommand": "corepack enable & corepack pnpm install",
+  "postCreateCommand": "corepack enable & corepack pnpm install"
 }
