@@ -5,16 +5,5 @@
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [3000, 5173, 4173],
-  "postStartCommand": "corepack enable & corepack pnpm install",
-  "customizations": {
-    "vscode":{
-      "extensions": [
-        "Vue.volar",
-        "dbaeumer.vscode-eslint",
-        "ecmel.vscode-html-css",
-        "esbenp.prettier-vscode",
-        "stylelint.vscode-stylelint"
-      ]
-    }
-  }
+  "postCreateCommand": "corepack enable & corepack pnpm install",
 }
