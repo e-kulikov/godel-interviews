@@ -1,1 +1,3 @@
-FROM mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye
+FROM ghcr.io/codesandbox/devcontainers/typescript-node:latest
+
+RUN apt update && apt install -y postgresql-client

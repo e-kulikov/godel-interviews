@@ -16,7 +16,7 @@ services:
     env_file:
       - ../.env
     volumes:
-      - ../..:/workspaces:cached
+      - ../:/workspace:cached
     command: sleep infinity
     network_mode: service:db
 
