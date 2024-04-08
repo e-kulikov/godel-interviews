@@ -2,18 +2,25 @@
   "name": "godel-js-fullstack-interview",
   "version": "1.0.0",
   "description": "Applications for JS intreview",
-  "packageManager": "pnpm@8.15.5",
+  "packageManager": "pnpm@8.15.6",
   "scripts": {
-    "front:react:dev": "cd ./front/react && corepack pnpm dev",
-    "front:react:build": "cd ./front/react && corepack pnpm build",
-    "front:react:preview": "cd ./front/react && corepack pnpm preview",
-    "front:react:lint": "cd ./front/react && corepack pnpm lint",
-    "front:vue:dev": "cd ./front/vue && corepack pnpm dev",
-    "front:vue:build": "cd ./front/vue && corepack pnpm build",
-    "front:vue:preview": "cd ./front/vue && corepack pnpm preview",
-    "front:vue:lint": "cd ./front/vue && corepack pnpm lint"
+    "front:react:dev": "corepack pnpm --filter=react dev",
+    "front:react:build": "corepack pnpm --filter=react build",
+    "front:react:preview": "corepack pnpm --filter=react preview",
+    "front:react:lint": "corepack pnpm --filter=react lint",
+    "front:vue:dev": "corepack pnpm --filter=vue dev",
+    "front:vue:build": "corepack pnpm --filter=vue build",
+    "front:vue:preview": "corepack pnpm --filter=vue preview",
+    "front:vue:lint": "corepack pnpm --filter=vue lint"
   },
-  "keywords": ["godel", "interview", "javascript", "typescript", "react", "vue"],
+  "keywords": [
+    "godel",
+    "interview",
+    "javascript",
+    "typescript",
+    "react",
+    "vue"
+  ],
   "author": "Evgeny Kulikov <e.kulikov@godeltech.com>",
   "license": "UNLICENSED"
 }
