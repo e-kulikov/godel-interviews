@@ -4,5 +4,18 @@
   "service": "app",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "forwardPorts": [3000, 5173, 4173],
-  "postCreateCommand": "corepack prepare --activate"
+  "postCreateCommand": "corepack prepare --activate",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "vue.volar",
+        "ecmel.vscode-html-css",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "dotenv.dotenv-vscode",
+        "humao.rest-client"
+      ]
+    }
+  }
 }
