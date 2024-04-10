@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { defineEmits, defineProps } from "vue";
+interface PaginationProps {
+  currentPageNumber: number
+}
 
-defineProps(["currentPageNumber"]);
-defineEmits(["changePageNumber"]);
+type PaginationEmits = {
+  changePageNumber: [page: number]
+}
+
+defineProps<PaginationProps>();
+defineEmits<PaginationEmits>();
 </script>
 
 <template>
