@@ -1,28 +1,13 @@
-import { Readable, type Transform } from "node:stream"
-import { type Request as ExpressRequest, type Response as ExpressResponse } from "express"
+import { type Request as ExpressRequest } from 'express'
 
-import { mergeOptions } from "./request.ts"
+import { mergeOptions } from './request.ts'
 
-export const proxy = async (url: URL, req: ExpressRequest, res: ExpressResponse, options?: RequestInit, tranformer?: Transform) => {
-    const { signal, abort } = new AbortController()
+export const proxy = async (url: URL, req: ExpressRequest, options?: RequestInit) => {
+    const abortController = new AbortController()
     
     req.once('aborted', () => {
-        abort('aborted');
-        res.end(null)
+        abortController.abort('aborted')
     })
-
-    try {
-        const response = await fetch(new Request(url, mergeOptions(req, options, signal)))
-
-        if (!response.body) return res.end(response.status)
-
-        let stream = Readable.fromWeb(response.body)
-        if (tranformer) {
-            stream = stream.pipe(tranformer)
-        }
-        stream.pipe(res)
-    } catch (err) {
-        console.error(err);
-        res.status(500).end({ error: 'Something wrong happened' })
-    }
+    
+    return fetch(new Request(url, mergeOptions(req, options, abortController.signal)))
 }

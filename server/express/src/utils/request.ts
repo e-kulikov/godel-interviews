@@ -1,4 +1,4 @@
-import { type Request as ExpressRequest } from "express"
+import { type Request as ExpressRequest } from 'express'
 
 interface IncomingOptions extends Pick<ExpressRequest, 'method' | 'headers'> {}
 
