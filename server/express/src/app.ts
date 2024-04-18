@@ -1,7 +1,9 @@
 import express, { type Express } from 'express'
 
-import clientsRouter from './routes/clients.route.ts'
 import { errorHandler } from './middlewares/error.middleware.ts'
+
+import clientsRouter from './routes/clients.route.ts'
+import assetsRouter from './routes/assets.route.ts'
 
 const app: Express = express()
 
@@ -13,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/clients', clientsRouter)
+app.use('/assets',assetsRouter)
 
 app.use(errorHandler)
 
