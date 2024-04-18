@@ -1,19 +1,25 @@
 import { type RequestHandler } from 'express'
 
-import { SOURCE_API_URL } from '../config.ts'
-import { proxy } from '../utils/proxy.ts'
-import { pokemonURLtoClientID } from '../helpers/clients.helper.ts'
+import { getPokemon, getPokemonsList } from '../services/pokemons.service.ts'
+import { translateURLtoID, capitalizeName } from '../helpers/pokemons.helper.ts'
+import { pipe } from '../utils/pipe.ts'
 
-const EXTERNAL_API_PATH = 'pokemon'
+export const getAllClients: RequestHandler<{}, {}, {}, { offset: number; limit: number }> = async (req, res, next) => {
+    try {
+        const { offset, limit } = req.query
 
-export const getAllClients: RequestHandler = (req, res) => proxy(
-    new URL(`${EXTERNAL_API_PATH}?limit=100000`, SOURCE_API_URL),
-    req,
-    res,
-    {},
-    pokemonURLtoClientID
-)
+        const { results } = await getPokemonsList({ offset, limit })
 
-export const getClientById: RequestHandler = (req, res) => {
+        res.json({ clients: results.map(pipe(translateURLtoID, capitalizeName)) })
+    } catch (err) {
+        next(err)
+    }
+}
 
+export const getClientById: RequestHandler<{ id: number }> = async (req, res, next) => {
+    try {
+        res.json({ client: await getPokemon(req.params.id) })
+    } catch (err) {
+        next(err)
+    }
 }

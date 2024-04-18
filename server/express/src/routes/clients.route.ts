@@ -1,4 +1,4 @@
-import { Router } from "express"
+import { Router } from 'express'
 import * as clients from '../controllers/clients.controller.ts'
 
 const router: Router = Router()
