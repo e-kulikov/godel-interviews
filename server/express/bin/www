@@ -1,0 +1,14 @@
+#!/usr/bin/env tsx
+import { createServer } from 'node:http'
+
+import app from '../src/app.ts'
+
+const server = createServer(app).listen(process.env.PORT ?? 3000);
+
+server.on('listening', () => {
+    console.log('Server listening on port', server.address()?.port)
+})
+
+server.on('error', (err) => {
+    console.error(err)
+})
