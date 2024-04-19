@@ -14,14 +14,15 @@ const parsePicture = ({ sprites }: { sprites: Sprites }) =>
 
 export interface Customer {
   name: string;
+  id: number;
 }
 
 export interface CustomerListResponse {
-  results: Customer[];
+  clients: Customer[];
 }
 export const parseCustomersList = ({
-  results,
-}: CustomerListResponse): Customer[] => results;
+  clients,
+}: CustomerListResponse): Customer[] => clients;
 
 export interface CustomerData extends Customer {
   id: number;
@@ -30,16 +31,18 @@ export interface CustomerData extends Customer {
   abilities: string[];
   picture: string;
 }
-export type CustomerResponse = CustomerData & {
-  abilities: Ability[];
-  sprites: Sprites;
+export interface CustomerResponse {
+  client: CustomerData & {
+    abilities: Ability[];
+    sprites: Sprites;
+  }
 };
 export const parseCustomerData = ({
-  name,
-  id,
-  height,
-  weight,
-  ...customer
+  client: { name,
+    id,
+    height,
+    weight,
+    ...customer }
 }: CustomerResponse): CustomerData => ({
   id,
   name,

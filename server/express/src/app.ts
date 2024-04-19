@@ -1,4 +1,5 @@
 import express, { type Express } from 'express'
+import cors from 'cors'
 
 import { errorHandler } from './middlewares/error.middleware.ts'
 
@@ -7,6 +8,9 @@ import assetsRouter from './routes/assets.route.ts'
 
 const app: Express = express()
 
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 app.use(express.json())
 app.use(express.static('public'))
 
@@ -15,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/clients', clientsRouter)
-app.use('/assets',assetsRouter)
+app.use('/assets', assetsRouter)
 
 app.use(errorHandler)
 

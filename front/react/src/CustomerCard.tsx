@@ -2,12 +2,12 @@ import { useAPICall } from "./use-api-call.ts";
 import { parseCustomerData as parseResponse } from "./customer-utils.ts";
 
 interface CustomerProps {
-  name: string;
+  id: number;
 }
 
-export const CustomerCard = ({ name }: CustomerProps) => {
+export const CustomerCard = ({ id }: CustomerProps) => {
   const { loading, error, data } = useAPICall({
-    path: `pokemon/${name}`,
+    path: `clients/${id}`,
     parseResponse,
   });
 

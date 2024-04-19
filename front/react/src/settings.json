@@ -1,5 +1,5 @@
 {
-  "API_URL": "https://pokeapi.co/api/v2",
+  "API_URL": "http://localhost:3000",
   "PAGE_SIZE": {
     "default": 12,
     "available": [12, 24, 48]

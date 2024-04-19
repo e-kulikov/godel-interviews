@@ -13,7 +13,7 @@ export const Dashboard = () => {
   const [pageSize, setPageSize] = useState(PAGE_SIZE.default);
   const [pageNumber, setPageNumber] = useState(0);
   const { data, loading, error } = useAPICall({
-    path: `pokemon?limit=${pageSize}&offset=${pageSize * pageNumber}`,
+    path: `clients?limit=${pageSize}&offset=${pageSize * pageNumber}`,
     parseResponse,
   });
 
@@ -34,7 +34,7 @@ export const Dashboard = () => {
       <PageSize size={pageSize} onSetSize={setPageSize} />
       <div className="customer-list">
         {data.map((customer) => (
-          <CustomerCard key={customer.name} name={customer.name} />
+          <CustomerCard key={customer.id} id={customer.id} />
         ))}
       </div>
       <Pagination pageNumber={pageNumber} onSetPage={setPageNumber} />
