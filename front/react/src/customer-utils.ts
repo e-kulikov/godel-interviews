@@ -36,7 +36,7 @@ export interface CustomerResponse {
     abilities: Ability[];
     sprites: Sprites;
   }
-};
+}
 export const parseCustomerData = ({
   client: { name,
     id,

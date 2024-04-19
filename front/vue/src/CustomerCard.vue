@@ -3,13 +3,13 @@ import { parseCustomerData as parseResponse } from "./customer-utils.ts"
 import useAPICall from "./use-api-call.ts"
 
 interface CustomerCardProps {
-  name: string
+  id: number
 }
 
 const props = defineProps<CustomerCardProps>()
 
 const { loading, error, data } = useAPICall({
-  path: `pokemon/${props.name}`,
+  path: `clients/${props.id}`,
   parseResponse,
 })
 </script>

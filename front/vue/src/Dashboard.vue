@@ -17,7 +17,7 @@ const setPageNumber = (pageNum: number) => {
 }
 
 const { loading, error, data } = useAPICall({
-  path: `pokemon?limit=${pageSize.value}&offset=${pageNumber.value * pageSize.value}`,
+  path: `clients?limit=${pageSize.value}&offset=${pageNumber.value * pageSize.value}`,
   parseResponse: parseCustomersList,
 })
 </script>
@@ -33,9 +33,9 @@ const { loading, error, data } = useAPICall({
     />
     <div class="customer-list">
       <CustomerCard
-        v-for="{ name } in data"
-        :key="name"
-        :name="name"
+        v-for="{ id } in data"
+        :id="id"
+        :key="id"
       />
     </div>
     <Pagination
