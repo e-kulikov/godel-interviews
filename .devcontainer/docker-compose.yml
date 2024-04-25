@@ -10,6 +10,17 @@ services:
     env_file:
       - ../.env
 
+  cache:
+    image: redis:latest
+    command: ['redis-server', '/usr/local/etc/redis/redis.conf']
+    restart: unless-stopped
+    volumes:
+      - redis:/var/lib/redis
+      - redis-config:/usr/local/etc/redis/redis.conf
+    env_file:
+      - ../.env
+    network_mode: service:db
+
   app:
     build:
       context: ..
@@ -23,3 +34,5 @@ services:
 
 volumes:
   postgres-data:
+  redis:
+  redis-config:
