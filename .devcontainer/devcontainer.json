@@ -14,7 +14,8 @@
         "esbenp.prettier-vscode",
         "stylelint.vscode-stylelint",
         "dotenv.dotenv-vscode",
-        "humao.rest-client"
+        "humao.rest-client",
+        "mechatroner.rainbow-csv"
       ]
     }
   }
