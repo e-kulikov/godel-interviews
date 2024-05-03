@@ -1,11 +1,14 @@
 import { useAPICall } from "./use-api-call.ts";
 import { parseCustomerData as parseResponse } from "./customer-utils.ts";
+import { CustomerInfo } from './CustomerInfo.tsx';
+import { useState } from "react";
 
 interface CustomerProps {
   id: number;
 }
 
 export const CustomerCard = ({ id }: CustomerProps) => {
+  const [showInfo, setShowInfo] = useState(false);
   const { loading, error, data } = useAPICall({
     path: `clients/${id}`,
     parseResponse,
@@ -25,7 +28,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
 
   return (
     <div className="customer">
-      <p className="name">
+      <p className="name" onClick={() => setShowInfo(state => !state)}>
         <strong>{data.name}</strong>
       </p>
       <img className="picture" src={data.picture} alt={data.name} />
@@ -38,6 +41,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
       <p>
         Abilities: <em>{data.abilities.join(", ")}</em>
       </p>
+      <CustomerInfo {...data} opened={showInfo} />
     </div>
   );
 };

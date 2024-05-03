@@ -9,7 +9,7 @@ import assetsRouter from './routes/assets.route.ts'
 const app: Express = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: true
 }))
 app.use(express.json())
 app.use(express.static('public'))
