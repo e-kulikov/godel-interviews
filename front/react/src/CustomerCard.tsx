@@ -2,6 +2,7 @@ import { useAPICall } from "./use-api-call.ts";
 import { parseCustomerData as parseResponse } from "./customer-utils.ts";
 import { CustomerInfo } from './CustomerInfo.tsx';
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 interface CustomerProps {
   id: number;
@@ -28,7 +29,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
 
   return (
     <div className="customer">
-      <p className="name" onClick={() => setShowInfo(state => !state)}>
+      <p className="name" onClick={() => { console.log('clicked'); setShowInfo(state => !state)}}>
         <strong>{data.name}</strong>
       </p>
       <img className="picture" src={data.picture} alt={data.name} />
@@ -41,7 +42,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
       <p>
         Abilities: <em>{data.abilities.join(", ")}</em>
       </p>
-      <CustomerInfo {...data} opened={showInfo} />
+      {showInfo && createPortal(<CustomerInfo {...data} onClose={() => setShowInfo(false)} />, document.body)}
     </div>
   );
 };
