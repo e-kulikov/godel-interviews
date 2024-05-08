@@ -15,7 +15,9 @@
         "stylelint.vscode-stylelint",
         "dotenv.dotenv-vscode",
         "humao.rest-client",
-        "mechatroner.rainbow-csv"
+        "mechatroner.rainbow-csv",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
       ]
     }
   }
