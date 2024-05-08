@@ -1,19 +1,29 @@
-import { useAPICall } from "./use-api-call.ts";
-import { parseCustomerData as parseResponse } from "./customer-utils.ts";
-import { CustomerInfo } from './CustomerInfo.tsx';
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef } from "react";
+
+import { useAPICall } from "../../hooks/use-api-call.ts";
+import { type ModalHandlers } from "../../hooks/use-modal.ts";
+import { parseCustomerData as parseResponse } from "../../utils/customer-utils.ts";
+
+import { inModal } from "../../hocs/modal.tsx";
+
+import { CustomerInfo } from './info.tsx';
 
 interface CustomerProps {
   id: number;
 }
 
+const CustomerInfoModal = inModal(CustomerInfo)
+
+const noop = () => {}
+
 export const CustomerCard = ({ id }: CustomerProps) => {
-  const [showInfo, setShowInfo] = useState(false);
+  const modal = useRef<ModalHandlers>(null)
   const { loading, error, data } = useAPICall({
     path: `clients/${id}`,
     parseResponse,
-  });
+  })
+
+  const showInfo = modal.current?.open ?? noop
 
   if (loading) {
     return <div className="customer">Loading...</div>;
@@ -29,7 +39,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
 
   return (
     <div className="customer">
-      <p className="name" onClick={() => { console.log('clicked'); setShowInfo(state => !state)}}>
+      <p className="name" onClick={showInfo}>
         <strong>{data.name}</strong>
       </p>
       <img className="picture" src={data.picture} alt={data.name} />
@@ -42,7 +52,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
       <p>
         Abilities: <em>{data.abilities.join(", ")}</em>
       </p>
-      {showInfo && createPortal(<CustomerInfo {...data} onClose={() => setShowInfo(false)} />, document.body)}
+      <CustomerInfoModal {...data} ref={modal} />
     </div>
   );
 };

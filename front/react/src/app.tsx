@@ -1,4 +1,4 @@
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "./components/dashboard";
 import "./styles.css";
 
 export default function App() {

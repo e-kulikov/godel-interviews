@@ -25,5 +25,5 @@ export const useOutsideClick =
             }
         }, [])
 
-        return ref;
+        return ref
     }

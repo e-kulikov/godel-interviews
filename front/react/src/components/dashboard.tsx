@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import { CustomerCard } from "./CustomerCard.tsx";
-import { PageSize } from "./PageSize.tsx";
-import { Pagination } from "./Pagination.tsx";
+import { CustomerCard } from "./customer/card.tsx";
+import { PageSize } from "./controls/page-size.tsx";
+import { Pagination } from "./controls/pagination.tsx";
 
-import { parseCustomersList as parseResponse } from "./customer-utils.ts";
-import { useAPICall } from "./use-api-call.ts";
+import { parseCustomersList as parseResponse } from "../utils/customer-utils.ts";
+import { useAPICall } from "../hooks/use-api-call.ts";
 
-import { PAGE_SIZE } from "./settings.json";
+import { PAGE_SIZE } from "../settings.json";
 
 export const Dashboard = () => {
   const [pageSize, setPageSize] = useState(PAGE_SIZE.default);

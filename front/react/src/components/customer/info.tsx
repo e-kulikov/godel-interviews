@@ -1,9 +1,6 @@
-import clsx from "clsx"
-
-import { type CustomerData } from "./customer-utils"
-import { CustomerTypes } from './components/CustomerTypes.tsx'
-import { CustomerStats } from './components/CustomerStats.tsx'
-import { useOutsideClick } from "./hooks/use-outside-click.ts"
+import { type CustomerData } from "../../utils/customer-utils.ts"
+import { CustomerTypes } from './types.tsx'
+import { CustomerStats } from './stats.tsx'
 
 export const CustomerInfo = ({
     name,
@@ -13,14 +10,10 @@ export const CustomerInfo = ({
     height,
     stats,
     moves,
-    types,
-    className,
-    onClose
-}: CustomerData & { onClose: () => void, className?: string }) => {
-    const ref = useOutsideClick<HTMLDivElement>(onClose)
-
+    types
+}: CustomerData) => {
     return (
-        <div ref={ref} className={clsx('customer-info', className)}>
+        <div className='customer-info'>
             <h2>{name.toUpperCase()}</h2>
             <CustomerTypes types={types} />
             <img className="picture" alt={name} src={picture} />

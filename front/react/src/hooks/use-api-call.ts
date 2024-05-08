@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_URL } from "./settings.json";
+import { API_URL } from "../settings.json";
 
 interface UseAPICallProps<Data, ServerResponse> {
   path: string;

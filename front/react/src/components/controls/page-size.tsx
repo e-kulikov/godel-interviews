@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "./settings.json";
+import { PAGE_SIZE } from "../../settings.json";
 
 interface PageSizeProps {
   size: number;
