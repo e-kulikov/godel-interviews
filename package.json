@@ -2,7 +2,7 @@
   "name": "godel-js-fullstack-interview",
   "version": "1.0.0",
   "description": "Applications for JS intreview",
-  "packageManager": "pnpm@9.0.5+sha256.61bd66913b52012107ec25a6ee4d6a161021ab99e04f6acee3aa50d0e34b4af9",
+  "packageManager": "pnpm@9.1.0+sha512.67f5879916a9293e5cf059c23853d571beaf4f753c707f40cb22bed5fb1578c6aad3b6c4107ccb3ba0b35be003eb621a16471ac836c87beb53f9d54bb4612724",
   "scripts": {
     "front:react:dev": "corepack pnpm --filter=react dev",
     "front:react:build": "corepack pnpm --filter=react build",
