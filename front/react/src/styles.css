@@ -8,6 +8,7 @@
   --success-color: #8bb174;
   --gap: 5px;
   --border-radius: 2px;
+  --animation-duration: .35s;
 }
 
 body {
@@ -95,13 +96,46 @@ body {
   margin-top: var(--gap);
 }
 
-.modal {
-  display: flex;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+@keyframes modal-slidedown {
+  from {
+    transform: translateY(-110vh);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-slideup {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-110vh);
+  }
+}
+
+.modal .content {
+  position: relative;
+  margin: calc(var(--gap) * 5);
+  border-radius: calc(var(--border-radius) * 2);
+  border: 1px solid var(--dark-color);
+  box-shadow: 1px 1px 3px var(--bright-color);
+  background: var(--white);
+  padding: var(--gap);
+}
+
+.blurred .modal .content {
+  transform: translate(0);
+}
+
+.animation-appeared .modal .content {
+  animation: var(--animation-duration) ease 0s 1 alternate modal-slidedown;
+  transform: translate(0);
+}
+
+.animation-disappeared .modal .content {
+  animation: var(--animation-duration) ease 0s 1 alternate modal-slideup;
+  transform: translate(-110vh);
 }
 
 .modal .close {
@@ -111,6 +145,16 @@ body {
   right: var(--gap);
 }
 
-.customer-info {
-  background: var(--white)
+.blurred > * {
+  filter: blur(3px);
+}
+
+.modal {
+  filter: blur(0);
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }

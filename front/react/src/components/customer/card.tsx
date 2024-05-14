@@ -14,8 +14,6 @@ interface CustomerProps {
 
 const CustomerInfoModal = inModal(CustomerInfo)
 
-const noop = () => {}
-
 export const CustomerCard = ({ id }: CustomerProps) => {
   const modal = useRef<ModalHandlers>(null)
   const { loading, error, data } = useAPICall({
@@ -23,7 +21,7 @@ export const CustomerCard = ({ id }: CustomerProps) => {
     parseResponse,
   })
 
-  const showInfo = modal.current?.open ?? noop
+  const showInfo = modal.current?.open ?? undefined
 
   if (loading) {
     return <div className="customer">Loading...</div>;

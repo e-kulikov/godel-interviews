@@ -10,10 +10,10 @@ interface ModalProps {
 
 export const inModal = <Props extends object>(Component: ComponentType<Props>) =>
     forwardRef(({ isModalVisibleByDefault, ...props }: Props & ModalProps, ref) => {
-        const { open, close, toggle, isVisible } = useModal(isModalVisibleByDefault)
+        const { open, close, isVisible } = useModal(isModalVisibleByDefault)
         const modalRef = useOutsideClick<HTMLDivElement>(close)
 
-        useImperativeHandle(ref, () => ({ open, close, toggle }))
+        useImperativeHandle(ref, () => ({ open, close }))
 
         if (!isVisible) return null;
 
