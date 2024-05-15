@@ -6,25 +6,24 @@ export interface ModalHandlers {
     close(): void
 }
 
-const ANIMATION_APPEARED_CLASSNAME = 'animation-appeared'
-const ANIMATION_DISAPPEARED_CLASSNAME = 'animation-disappeared'
-const BODY_BLOCKING_CLASSNAME = 'blurred'
-const ANIMATION_DURATION = 350
-
-const toggleBodyBlockingClassName = (isVisible: boolean) => document.body.classList[isVisible ? 'add' : 'remove']?.(BODY_BLOCKING_CLASSNAME)
+const toggleBodyClassName = (className: string, isVisible: boolean) => document.body.classList[isVisible ? 'add' : 'remove']?.(className)
 
 export const useModal = (
     isModalVisibleByDefault: boolean = false,
-    appearringClassName: string = ANIMATION_APPEARED_CLASSNAME,
-    disappearringClassName: string = ANIMATION_DISAPPEARED_CLASSNAME,
+    {
+        appearing = 'appearing',
+        disappearing = 'disappearing',
+        blocked = 'blocked',
+        durationMs = 350,
+    } = {}
 ): ModalHandlers & { isVisible: boolean } => {
     const [isVisible, setVisibility] = useState(isModalVisibleByDefault)
-    const [ animateForward, animateBackward] = useAnimation(ANIMATION_DURATION, appearringClassName, disappearringClassName)
+    const [ animateForward, animateBackward] = useAnimation(durationMs, appearing, disappearing)
 
     useEffect(() => {
-        toggleBodyBlockingClassName(isVisible)
-        return () => toggleBodyBlockingClassName(false)
-    }, [isVisible])
+        toggleBodyClassName(blocked, isVisible)
+        return () => toggleBodyClassName(blocked, false)
+    }, [isVisible, blocked])
 
     const open = useCallback(() => {
         setVisibility(true)
@@ -33,8 +32,8 @@ export const useModal = (
 
     const close = useCallback(() => {
         animateBackward()
-        setTimeout(() => setVisibility(false), ANIMATION_DURATION)
-    }, [animateBackward])
+        setTimeout(() => setVisibility(false), durationMs)
+    }, [animateBackward, durationMs])
 
     return { isVisible, open, close }
 }

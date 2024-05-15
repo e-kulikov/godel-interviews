@@ -1,0 +1,19 @@
+.pokemon-card {
+    display: block;
+    cursor: pointer;
+    border-radius: calc(var(--border-radius) * 2);
+    padding: var(--gap);
+    border: 1px solid var(--dark-color);
+    box-shadow: 1px 1px 3px var(--bright-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: var(--bright-color);
+    }
+
+    .picture {
+        max-width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+}

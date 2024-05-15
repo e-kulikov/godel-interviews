@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState } from "react"
+import { PokemonCard } from "./pokemon/card.tsx"
+import { PageSize } from "./controls/page-size.tsx"
+import { Pagination } from "./controls/pagination.tsx"
 
-import { CustomerCard } from "./customer/card.tsx";
-import { PageSize } from "./controls/page-size.tsx";
-import { Pagination } from "./controls/pagination.tsx";
+import { parseCustomersList as parseResponse } from "../utils/customer-utils.ts"
+import { useAPICall } from "../hooks/use-api-call.ts"
 
-import { parseCustomersList as parseResponse } from "../utils/customer-utils.ts";
-import { useAPICall } from "../hooks/use-api-call.ts";
+import { PAGE_SIZE } from "../settings.json"
 
-import { PAGE_SIZE } from "../settings.json";
+import './dashboard.styles.css'
 
 export const Dashboard = () => {
   const [pageSize, setPageSize] = useState(PAGE_SIZE.default);
@@ -32,9 +33,9 @@ export const Dashboard = () => {
   return (
     <div>
       <PageSize size={pageSize} onSetSize={setPageSize} />
-      <div className="customer-list">
+      <div className="pokemons-list">
         {data.map((customer) => (
-          <CustomerCard key={customer.id} id={customer.id} />
+          <PokemonCard key={customer.id} id={customer.id} className="pokemon" />
         ))}
       </div>
       <Pagination pageNumber={pageNumber} onSetPage={setPageNumber} />

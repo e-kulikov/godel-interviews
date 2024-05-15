@@ -1,0 +1,13 @@
+:root {
+    --active-color: #3a6ea5;
+    --dark-color: #1f3b58;
+    --bright-color: #93b5d9;
+    --white: #f3f3f3;
+    --black: #0f1020;
+    --error-color: #db5461;
+    --success-color: #8bb174;
+    --gap: 5px;
+    --border-radius: 2px;
+    --animation-duration: .35s;
+    --blur-radius: 3px;
+}
